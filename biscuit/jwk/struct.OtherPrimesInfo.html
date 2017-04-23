@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `OtherPrimesInfo` struct in crate `biscuit`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, OtherPrimesInfo">
+
+    <title>biscuit::jwk::OtherPrimesInfo - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>biscuit</a>::<wbr><a href='index.html'>jwk</a></p><script>window.sidebarCurrent = {name: 'OtherPrimesInfo', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>biscuit</a>::<wbr><a href='index.html'>jwk</a>::<wbr><a class='struct' href=''>OtherPrimesInfo</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/biscuit/jwk.rs.html#373-391' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct OtherPrimesInfo {
+    pub r: <a class='struct' href='https://rust-num.github.io/num/num_bigint/biguint/struct.BigUint.html' title='num_bigint::biguint::BigUint'>BigUint</a>,
+    pub d: <a class='struct' href='https://rust-num.github.io/num/num_bigint/biguint/struct.BigUint.html' title='num_bigint::biguint::BigUint'>BigUint</a>,
+    pub t: <a class='struct' href='https://rust-num.github.io/num/num_bigint/biguint/struct.BigUint.html' title='num_bigint::biguint::BigUint'>BigUint</a>,
+}</pre><div class='docblock'><p>The &quot;oth&quot; (other primes info) parameter contains an array of
+information about any third and subsequent primes, should they exist.
+When only two primes have been used (the normal case), this parameter
+MUST be omitted.  When three or more primes have been used, the
+number of array elements MUST be the number of primes used minus two.
+For more information on this case, see the description of the
+<code>OtherPrimeInfo</code> parameters in <a href="https://tools.ietf.org/html/rfc3447#appendix-A.1.2">Appendix A.1.2 of RFC 3447</a>,
+upon which the following parameters are modeled.  If the consumer of
+a JWK does not support private keys with more than two primes and it
+encounters a private key that includes the &quot;oth&quot; parameter, then it
+MUST NOT use the key.</p>
+</div><h2 class='fields'>Fields</h2><span id='structfield.r' class='structfield'>
+                           <span id='r.v' class='invisible'>
+                           <code>r: <a class='struct' href='https://rust-num.github.io/num/num_bigint/biguint/struct.BigUint.html' title='num_bigint::biguint::BigUint'>BigUint</a></code>
+                           </span></span><span class='stab '></span><div class='docblock'><p>The &quot;r&quot; (prime factor) parameter
+represents the value of a subsequent prime factor.
+It is serialized as a Base64urlUInt-encoded value.</p>
+</div><span id='structfield.d' class='structfield'>
+                           <span id='d.v' class='invisible'>
+                           <code>d: <a class='struct' href='https://rust-num.github.io/num/num_bigint/biguint/struct.BigUint.html' title='num_bigint::biguint::BigUint'>BigUint</a></code>
+                           </span></span><span class='stab '></span><div class='docblock'><p>The &quot;d&quot; (factor CRT exponent) parameter
+represents the CRT exponent of the corresponding prime factor.
+It is serialized as a Base64urlUInt-encoded value.</p>
+</div><span id='structfield.t' class='structfield'>
+                           <span id='t.v' class='invisible'>
+                           <code>t: <a class='struct' href='https://rust-num.github.io/num/num_bigint/biguint/struct.BigUint.html' title='num_bigint::biguint::BigUint'>BigUint</a></code>
+                           </span></span><span class='stab '></span><div class='docblock'><p>The &quot;t&quot; (factor CRT coefficient) parameter
+member represents the CRT coefficient of the corresponding prime
+factor.</p>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../../biscuit/jwk/struct.OtherPrimesInfo.html' title='biscuit::jwk::OtherPrimesInfo'>OtherPrimesInfo</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/biscuit/jwk.rs.html#372' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class='method'><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../../biscuit/jwk/struct.OtherPrimesInfo.html' title='biscuit::jwk::OtherPrimesInfo'>OtherPrimesInfo</a></code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class='method'><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a> for <a class='struct' href='../../biscuit/jwk/struct.OtherPrimesInfo.html' title='biscuit::jwk::OtherPrimesInfo'>OtherPrimesInfo</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/biscuit/jwk.rs.html#372' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='struct' href='../../biscuit/jwk/struct.OtherPrimesInfo.html' title='biscuit::jwk::OtherPrimesInfo'>OtherPrimesInfo</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/biscuit/jwk.rs.html#372' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class='method'><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class='struct' href='../../biscuit/jwk/struct.OtherPrimesInfo.html' title='biscuit::jwk::OtherPrimesInfo'>OtherPrimesInfo</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class='method'><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class='struct' href='../../biscuit/jwk/struct.OtherPrimesInfo.html' title='biscuit::jwk::OtherPrimesInfo'>OtherPrimesInfo</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "biscuit";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

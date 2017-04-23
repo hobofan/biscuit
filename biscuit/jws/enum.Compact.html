@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Compact` enum in crate `biscuit`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Compact">
+
+    <title>biscuit::jws::Compact - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>biscuit</a>::<wbr><a href='index.html'>jws</a></p><script>window.sidebarCurrent = {name: 'Compact', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>biscuit</a>::<wbr><a href='index.html'>jws</a>::<wbr><a class='enum' href=''>Compact</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/biscuit/jws.rs.html#32-45' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum Compact&lt;T, H&gt; {
+    Decoded {
+        header: <a class='struct' href='../../biscuit/jws/struct.Header.html' title='biscuit::jws::Header'>Header</a>&lt;H&gt;,
+        payload: T,
+    },
+    Encoded(<a class='struct' href='../../biscuit/struct.Compact.html' title='biscuit::Compact'>Compact</a>),
+}</pre><div class='docblock'><p>Compact representation of a JWS</p>
+
+<p>This representation contains a payload (type <code>T</code>) (e.g. a claims set) and is (optionally) signed. This is the
+most common form of tokens used. The JWS can contain additional header fields provided by type <code>H</code>.</p>
+
+<p>Serialization/deserialization is handled by serde. Before you transport the token, make sure you
+turn it into the encoded form first.</p>
+
+<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
+<h2 id='signing-and-verifying-a-jwt-with-hs256' class='section-header'><a href='#signing-and-verifying-a-jwt-with-hs256'>Signing and verifying a JWT with HS256</a></h2>
+<p>See an example in the <a href="../type.JWT.html"><code>biscuit::JWT</code></a> type alias.</p>
+</div><h2 class='variants'>Variants</h2>
+<span id='variant.Decoded' class='variant'><span id='Decoded.v' class='invisible'><code>Decoded</code></span></span><div class='docblock'><p>Decoded form of the JWS.
+This variant cannot be serialized or deserialized and will return an error.</p>
+</div><span class='docblock autohide sub-variant' id='variant.Decoded.fields'><h3 class='fields'>Fields of <code>Decoded</code></h3>
+
+                           <table><tr><td id='variant.Decoded.field.header'><span id='Decoded.v.header.v' class='invisible'><code>header:&nbsp;<a class='struct' href='../../biscuit/jws/struct.Header.html' title='biscuit::jws::Header'>Header</a>&lt;H&gt;</code></span></td><td><div class='docblock'><p>Embedded header</p>
+</div></td></tr><tr><td id='variant.Decoded.field.payload'><span id='Decoded.v.payload.v' class='invisible'><code>payload:&nbsp;T</code></span></td><td><div class='docblock'><p>Payload, usually a claims set</p>
+</div></td></tr></table></span><span id='variant.Encoded' class='variant'><span id='Encoded.v' class='invisible'><code>Encoded(<a class='struct' href='../../biscuit/struct.Compact.html' title='biscuit::Compact'>Compact</a>)</code></span></span><div class='docblock'><p>Encoded and (optionally) signed JWT. Use this form to send to your clients</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class='trait' href='../../biscuit/trait.CompactPart.html' title='biscuit::CompactPart'>CompactPart</a>, H:&nbsp;<a class='trait' href='https://docs.rs/serde/1.0.0/serde/ser/trait.Serialize.html' title='serde::ser::Serialize'>Serialize</a> + <a class='trait' href='https://docs.rs/serde/1.0.0/serde/de/trait.DeserializeOwned.html' title='serde::de::DeserializeOwned'>DeserializeOwned</a>&gt; <a class='enum' href='../../biscuit/jws/enum.Compact.html' title='biscuit::jws::Compact'>Compact</a>&lt;T, H&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/biscuit/jws.rs.html#47-205' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new_decoded' class='method'><span id='new_decoded.v' class='invisible'><code>fn <a href='#method.new_decoded' class='fnname'>new_decoded</a>(header: <a class='struct' href='../../biscuit/jws/struct.Header.html' title='biscuit::jws::Header'>Header</a>&lt;H&gt;, payload: T) -&gt; Self</code></span></h4>
+<div class='docblock'><p>New decoded JWT</p>
+</div><h4 id='method.new_encoded' class='method'><span id='new_encoded.v' class='invisible'><code>fn <a href='#method.new_encoded' class='fnname'>new_encoded</a>(token: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; Self</code></span></h4>
+<div class='docblock'><p>New encoded JWT</p>
+</div><h4 id='method.into_encoded' class='method'><span id='into_encoded.v' class='invisible'><code>fn <a href='#method.into_encoded' class='fnname'>into_encoded</a>(self, secret: &amp;<a class='enum' href='../../biscuit/jws/enum.Secret.html' title='biscuit::jws::Secret'>Secret</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;Self, <a class='enum' href='../../biscuit/errors/enum.Error.html' title='biscuit::errors::Error'>Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Consumes self and convert into encoded form. If the token is already encoded,
+this is a no-op.</p>
+</div><h4 id='method.encode' class='method'><span id='encode.v' class='invisible'><code>fn <a href='#method.encode' class='fnname'>encode</a>(&amp;self, secret: &amp;<a class='enum' href='../../biscuit/jws/enum.Secret.html' title='biscuit::jws::Secret'>Secret</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;Self, <a class='enum' href='../../biscuit/errors/enum.Error.html' title='biscuit::errors::Error'>Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Encode the JWT passed and sign the payload using the algorithm from the header and the secret
+The secret is dependent on the signing algorithm</p>
+</div><h4 id='method.into_decoded' class='method'><span id='into_decoded.v' class='invisible'><code>fn <a href='#method.into_decoded' class='fnname'>into_decoded</a>(self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; secret: &amp;<a class='enum' href='../../biscuit/jws/enum.Secret.html' title='biscuit::jws::Secret'>Secret</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; algorithm: <a class='enum' href='../../biscuit/jwa/enum.SignatureAlgorithm.html' title='biscuit::jwa::SignatureAlgorithm'>SignatureAlgorithm</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;Self, <a class='enum' href='../../biscuit/errors/enum.Error.html' title='biscuit::errors::Error'>Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Consumes self and convert into decoded form, verifying the signature, if any.
+If the token is already decoded, this is a no-op</p>
+</div><h4 id='method.decode' class='method'><span id='decode.v' class='invisible'><code>fn <a href='#method.decode' class='fnname'>decode</a>(&amp;self,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; secret: &amp;<a class='enum' href='../../biscuit/jws/enum.Secret.html' title='biscuit::jws::Secret'>Secret</a>,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; algorithm: <a class='enum' href='../../biscuit/jwa/enum.SignatureAlgorithm.html' title='biscuit::jwa::SignatureAlgorithm'>SignatureAlgorithm</a>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;Self, <a class='enum' href='../../biscuit/errors/enum.Error.html' title='biscuit::errors::Error'>Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Decode a token into the JWT struct and verify its signature
+If the token or its signature is invalid, it will return an error</p>
+</div><h4 id='method.encoded' class='method'><span id='encoded.v' class='invisible'><code>fn <a href='#method.encoded' class='fnname'>encoded</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;&amp;<a class='struct' href='../../biscuit/struct.Compact.html' title='biscuit::Compact'>Compact</a>, <a class='enum' href='../../biscuit/errors/enum.Error.html' title='biscuit::errors::Error'>Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Convenience method to get a reference to the encoded string from an encoded compact JWS</p>
+</div><h4 id='method.encoded_mut' class='method'><span id='encoded_mut.v' class='invisible'><code>fn <a href='#method.encoded_mut' class='fnname'>encoded_mut</a>(&amp;mut self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;&amp;mut <a class='struct' href='../../biscuit/struct.Compact.html' title='biscuit::Compact'>Compact</a>, <a class='enum' href='../../biscuit/errors/enum.Error.html' title='biscuit::errors::Error'>Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Convenience method to get a mutable reference to the encoded string from an encoded compact JWS</p>
+</div><h4 id='method.payload' class='method'><span id='payload.v' class='invisible'><code>fn <a href='#method.payload' class='fnname'>payload</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;&amp;T, <a class='enum' href='../../biscuit/errors/enum.Error.html' title='biscuit::errors::Error'>Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Convenience method to get a reference to the claims set from a decoded compact JWS</p>
+</div><h4 id='method.payload_mut' class='method'><span id='payload_mut.v' class='invisible'><code>fn <a href='#method.payload_mut' class='fnname'>payload_mut</a>(&amp;mut self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;&amp;mut T, <a class='enum' href='../../biscuit/errors/enum.Error.html' title='biscuit::errors::Error'>Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Convenience method to get a reference to the claims set from a decoded compact JWS</p>
+</div><h4 id='method.header' class='method'><span id='header.v' class='invisible'><code>fn <a href='#method.header' class='fnname'>header</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;&amp;<a class='struct' href='../../biscuit/jws/struct.Header.html' title='biscuit::jws::Header'>Header</a>&lt;H&gt;, <a class='enum' href='../../biscuit/errors/enum.Error.html' title='biscuit::errors::Error'>Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Convenience method to get a reference to the header from a decoded compact JWS</p>
+</div><h4 id='method.header_mut' class='method'><span id='header_mut.v' class='invisible'><code>fn <a href='#method.header_mut' class='fnname'>header_mut</a>(&amp;mut self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;&amp;mut <a class='struct' href='../../biscuit/jws/struct.Header.html' title='biscuit::jws::Header'>Header</a>&lt;H&gt;, <a class='enum' href='../../biscuit/errors/enum.Error.html' title='biscuit::errors::Error'>Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Convenience method to get a reference to the header from a decoded compact JWS</p>
+</div><h4 id='method.unwrap_decoded' class='method'><span id='unwrap_decoded.v' class='invisible'><code>fn <a href='#method.unwrap_decoded' class='fnname'>unwrap_decoded</a>(self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(</a><a class='struct' href='../../biscuit/jws/struct.Header.html' title='biscuit::jws::Header'>Header</a>&lt;H&gt;, T<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>)</a></code></span></h4>
+<div class='docblock'><p>Consumes self, and move the payload and header out and return them as a tuple</p>
+
+<h1 id='panics' class='section-header'><a href='#panics'>Panics</a></h1>
+<p>Panics if the JWS is not decoded</p>
+</div><h4 id='method.unwrap_encoded' class='method'><span id='unwrap_encoded.v' class='invisible'><code>fn <a href='#method.unwrap_encoded' class='fnname'>unwrap_encoded</a>(self) -&gt; <a class='struct' href='../../biscuit/struct.Compact.html' title='biscuit::Compact'>Compact</a></code></span></h4>
+<div class='docblock'><p>Consumes self, and move the encoded Compact out and return it</p>
+
+<h1 id='panics-1' class='section-header'><a href='#panics-1'>Panics</a></h1>
+<p>Panics if the JWS is not encoded</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a>, H:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a>&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../../biscuit/jws/enum.Compact.html' title='biscuit::jws::Compact'>Compact</a>&lt;T, H&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/biscuit/jws.rs.html#30' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.clone' class='method'><span id='clone.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../../biscuit/jws/enum.Compact.html' title='biscuit::jws::Compact'>Compact</a>&lt;T, H&gt;</code></span></h4>
+<div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>
+</div><h4 id='method.clone_from' class='method'><span id='clone_from.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code><div class='since' title='Stable since Rust version 1.0.0'>1.0.0</div></span></h4>
+<div class='docblock'><p>Performs copy-assignment from <code>source</code>. <a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from">Read more</a></p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a>, H:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a>&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../../biscuit/jws/enum.Compact.html' title='biscuit::jws::Compact'>Compact</a>&lt;T, H&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/biscuit/jws.rs.html#30' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.fmt' class='method'><span id='fmt.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#tymethod.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></span></h4>
+<div class='docblock'><p>Formats the value using the given formatter.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a>, H:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a>&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.Eq.html' title='core::cmp::Eq'>Eq</a> for <a class='enum' href='../../biscuit/jws/enum.Compact.html' title='biscuit::jws::Compact'>Compact</a>&lt;T, H&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/biscuit/jws.rs.html#30' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a>, H:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a>&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='enum' href='../../biscuit/jws/enum.Compact.html' title='biscuit::jws::Compact'>Compact</a>&lt;T, H&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/biscuit/jws.rs.html#30' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.eq' class='method'><span id='eq.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../../biscuit/jws/enum.Compact.html' title='biscuit::jws::Compact'>Compact</a>&lt;T, H&gt;) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>self</code> and <code>other</code> values to be equal, and is used by <code>==</code>. <a href="https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#tymethod.eq">Read more</a></p>
+</div><h4 id='method.ne' class='method'><span id='ne.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../../biscuit/jws/enum.Compact.html' title='biscuit::jws::Compact'>Compact</a>&lt;T, H&gt;) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></span></h4>
+<div class='docblock'><p>This method tests for <code>!=</code>.</p>
+</div></div><h3 class='impl'><span class='in-band'><code>impl&lt;T:&nbsp;<a class='trait' href='../../biscuit/trait.CompactPart.html' title='biscuit::CompactPart'>CompactPart</a>, H:&nbsp;<a class='trait' href='https://docs.rs/serde/1.0.0/serde/ser/trait.Serialize.html' title='serde::ser::Serialize'>Serialize</a> + <a class='trait' href='https://docs.rs/serde/1.0.0/serde/de/trait.DeserializeOwned.html' title='serde::de::DeserializeOwned'>DeserializeOwned</a>&gt; <a class='trait' href='../../biscuit/trait.CompactPart.html' title='biscuit::CompactPart'>CompactPart</a> for <a class='enum' href='../../biscuit/jws/enum.Compact.html' title='biscuit::jws::Compact'>Compact</a>&lt;T, H&gt;</code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/biscuit/jws.rs.html#209-219' title='goto source code'>[src]</a></span></h3>
+<div class='docblock'><p>Implementation for embedded inside a JWE.</p>
+</div><div class='impl-items'><h4 id='method.to_bytes' class='method'><span id='to_bytes.v' class='invisible'><code>fn <a href='../../biscuit/trait.CompactPart.html#tymethod.to_bytes' class='fnname'>to_bytes</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>&gt;, <a class='enum' href='../../biscuit/errors/enum.Error.html' title='biscuit::errors::Error'>Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Convert this part into bytes</p>
+</div><h4 id='method.from_bytes' class='method'><span id='from_bytes.v' class='invisible'><code>fn <a href='../../biscuit/trait.CompactPart.html#tymethod.from_bytes' class='fnname'>from_bytes</a>(bytes: <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;Self, <a class='enum' href='../../biscuit/errors/enum.Error.html' title='biscuit::errors::Error'>Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Convert a sequence of bytes into Self</p>
+</div><h4 id='method.from_base64' class='method'><span id='from_base64.v' class='invisible'><code>fn <a href='../../biscuit/trait.CompactPart.html#method.from_base64' class='fnname'>from_base64</a>&lt;B:&nbsp;<a class='trait' href='https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html' title='core::convert::AsRef'>AsRef</a>&lt;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>[</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a><a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>&gt;&gt;(encoded: &amp;B) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;Self, <a class='enum' href='../../biscuit/errors/enum.Error.html' title='biscuit::errors::Error'>Error</a>&gt; <span class='where fmt-newline'>where Self: <a class='trait' href='https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html' title='core::marker::Sized'>Sized</a></span></code></span></h4>
+<div class='docblock'><p>Base64 decode into Self</p>
+</div><h4 id='method.to_base64' class='method'><span id='to_base64.v' class='invisible'><code>fn <a href='../../biscuit/trait.CompactPart.html#method.to_base64' class='fnname'>to_base64</a>(&amp;self) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='../../biscuit/struct.Base64Url.html' title='biscuit::Base64Url'>Base64Url</a>, <a class='enum' href='../../biscuit/errors/enum.Error.html' title='biscuit::errors::Error'>Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Serialize <code>Self</code> to some form and then base64URL Encode</p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "biscuit";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

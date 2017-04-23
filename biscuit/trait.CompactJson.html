@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `CompactJson` trait in crate `biscuit`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, CompactJson">
+
+    <title>biscuit::CompactJson - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>biscuit</a></p><script>window.sidebarCurrent = {name: 'CompactJson', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content trait">
+<h1 class='fqn'><span class='in-band'>Trait <a href='index.html'>biscuit</a>::<wbr><a class='trait' href=''>CompactJson</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/biscuit/lib.rs.html#342' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait CompactJson: <a class='trait' href='https://docs.rs/serde/1.0.0/serde/ser/trait.Serialize.html' title='serde::ser::Serialize'>Serialize</a> + <a class='trait' href='https://docs.rs/serde/1.0.0/serde/de/trait.DeserializeOwned.html' title='serde::de::DeserializeOwned'>DeserializeOwned</a> { }</pre><div class='docblock'><p>A marker trait that indicates that the object is to be serialized to JSON and deserialized from JSON.
+This is primarily used in conjunction with the <code>CompactPart</code> trait which will serialize structs to JSON before
+base64 encoding, and vice-versa.</p>
+</div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl&lt;T:&nbsp;<a class='trait' href='https://docs.rs/serde/1.0.0/serde/ser/trait.Serialize.html' title='serde::ser::Serialize'>Serialize</a> + <a class='trait' href='https://docs.rs/serde/1.0.0/serde/de/trait.DeserializeOwned.html' title='serde::de::DeserializeOwned'>DeserializeOwned</a>&gt; CompactJson for biscuit::jws::<a class='struct' href='../biscuit/jws/struct.Header.html' title='biscuit::jws::Header'>Header</a>&lt;T&gt;</code></li>
+<li><code>impl&lt;T:&nbsp;<a class='trait' href='https://docs.rs/serde/1.0.0/serde/ser/trait.Serialize.html' title='serde::ser::Serialize'>Serialize</a> + <a class='trait' href='https://docs.rs/serde/1.0.0/serde/de/trait.DeserializeOwned.html' title='serde::de::DeserializeOwned'>DeserializeOwned</a>&gt; CompactJson for biscuit::jwe::<a class='struct' href='../biscuit/jwe/struct.Header.html' title='biscuit::jwe::Header'>Header</a>&lt;T&gt;</code></li>
+<li><code>impl CompactJson for <a class='struct' href='../biscuit/struct.Empty.html' title='biscuit::Empty'>Empty</a></code></li>
+<li><code>impl&lt;T&gt; CompactJson for <a class='struct' href='../biscuit/struct.ClaimsSet.html' title='biscuit::ClaimsSet'>ClaimsSet</a>&lt;T&gt; <span class='where fmt-newline'>where T: <a class='trait' href='https://docs.rs/serde/1.0.0/serde/ser/trait.Serialize.html' title='serde::ser::Serialize'>Serialize</a> + <a class='trait' href='https://docs.rs/serde/1.0.0/serde/de/trait.DeserializeOwned.html' title='serde::de::DeserializeOwned'>DeserializeOwned</a></span></code></li>
+</ul><script type="text/javascript" async
+                         src="../implementors/biscuit/trait.CompactJson.js">
+                 </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "biscuit";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
